@@ -50,7 +50,7 @@ const NeoGrid = (): JSX.Element => {
       {/* Title */}
       <h1>Near Earth Objects</h1>
       {/* Grid */}
-      <AgGridReact rowData={data} columnDefs={columnDefs} rowGroupPanelShow={"always"} />
+      <AgGridReact rowData={data} columnDefs={columnDefs} rowGroupPanelShow={"always"} enableCellTextSelection cellSelection />
     </div>
   );
 };
