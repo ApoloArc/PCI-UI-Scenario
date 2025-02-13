@@ -11,7 +11,7 @@ const columnDefs: ColDef[] = [
     headerName: "Discovery Date",
     filter: "agDateColumnFilter",
     valueFormatter(params) {
-      return new Date(params.value).toLocaleDateString('en-gb');
+      return new Date(params.value).toLocaleDateString("en-gb");
     },
   },
   { field: "h_mag", headerName: "H (mag)", filter: "agNumberColumnFilter" },
@@ -20,7 +20,22 @@ const columnDefs: ColDef[] = [
   { field: "q_au_2", headerName: "Q (au)", filter: "agNumberColumnFilter" },
   { field: "period_yr", headerName: "Period (yr)", filter: "agNumberColumnFilter" },
   { field: "i_deg", headerName: "Inclination (deg)", filter: "agNumberColumnFilter" },
-  { field: "pha", headerName: "Potentially Hazardous", filter: true, comparator: (a, b) => a.localeCompare(b) },
+  {
+    field: "pha",
+    headerName: "Potentially Hazardous",
+    filter: true,
+    comparator: (a, b) => a.localeCompare(b),
+    valueFormatter(params) {
+      switch (params.value) {
+        case "Y":
+          return "Yes";
+        case "N":
+          return "No";
+        default:
+          return "n/a";
+      }
+    },
+  },
   {
     field: "orbit_class",
     headerName: "Orbit Class",
